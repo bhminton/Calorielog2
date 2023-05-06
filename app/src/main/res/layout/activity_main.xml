@@ -1,23 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/calculateButton"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/calorieLog"
         android:layout_width="wrap_content"
         android:layout_height="60sp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
         android:gravity="center_horizontal"
-        android:textStyle="bold"
         android:inputType="textPersonName"
         android:text="Calorie Log "
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/breakfast"
+        android:layout_width="70sp"
+        android:layout_height="30sp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="341dp"
+        android:layout_marginBottom="24dp"
+        android:text="Breakfast"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/amSnack"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/calorieLog" />
+
+    <EditText
+        android:id="@+id/editTextBreakfast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:ems="10"
+        android:hint="calories in Breakfast"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/breakfast"
+        app:layout_constraintTop_toTopOf="@id/breakfast" />
+
+    <TextView
+        android:id="@+id/amSnack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24sp"
+        android:layout_marginBottom="24dp"
+        android:text="AM Snack"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/lunch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/breakfast" />
+
+    <EditText
+        android:id="@+id/editTextAmSnack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:ems="10"
+        android:hint="calories in amSnack"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/breakfast"
+        app:layout_constraintTop_toTopOf="@id/amSnack" />
+
+    <TextView
+        android:id="@+id/lunch"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="Lunch"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/pmSnack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amSnack" />
+
+    <EditText
+        android:id="@+id/editTextLunch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:ems="10"
+        android:hint="calories in lunch"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/breakfast"
+        app:layout_constraintTop_toTopOf="@id/lunch" />
+
+    <TextView
+        android:id="@+id/pmSnack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24sp"
+        android:text="pmSnack"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/supper"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lunch" />
+
+    <EditText
+        android:id="@+id/editTextPmSnack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:ems="10"
+        android:hint="calories in pmSnack"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/breakfast"
+        app:layout_constraintTop_toTopOf="@id/pmSnack" />
+
+    <TextView
+        android:id="@+id/supper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24sp"
+        android:text="Supper"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/nightSnack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pmSnack" />
+
+    <EditText
+        android:id="@+id/editTextSupper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:ems="10"
+        android:hint="calories in Supper"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/breakfast"
+        app:layout_constraintTop_toTopOf="@id/supper" />
+
+    <TextView
+        android:id="@+id/nightSnack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="228dp"
+        android:text="Night Snack"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/supper" />
+
+    <EditText
+        android:id="@+id/editTextNightSnack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:ems="10"
+        android:hint="calories in Night Snack"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/breakfast"
+        app:layout_constraintTop_toTopOf="@id/nightSnack" />
+
+    <TextView
+        android:id="@+id/exercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="192dp"
+        android:text="Exercise"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nightSnack" />
+
+    <EditText
+        android:id="@+id/editTextExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:ems="10"
+        android:hint="calories from Exercise "
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/breakfast"
+        app:layout_constraintTop_toTopOf="@id/exercise" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="125sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="Calculate Total"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exercise" />
+
+    <EditText
+        android:id="@+id/editTextDailyTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Total"
+        app:layout_constraintStart_toEndOf="@+id/breakfast"
+        app:layout_constraintTop_toTopOf="@id/button" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
