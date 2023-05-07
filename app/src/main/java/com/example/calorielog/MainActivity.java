@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     EditText calorieLog,editTextBreakfast,editTextAmSnack,editTextLunch,editTextPmSnack,editTextSupper;
     EditText editTextNightSnack,editTextExercise,editTextDailyTotal;
     Button     button;
-
+    ListView lv_resultlist;
 
 
     @Override

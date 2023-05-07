@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DBHelper extends SQLiteOpenHelper {
 
 
@@ -40,7 +43,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         // cv.put(COLUMN_ID,dailyLog.getID());
-        cv.put(COLUMN_TOTAL_CALORIES, dailyLog.getName());//.toString());///dailyLog.getName())
+        cv.put(COLUMN_TOTAL_CALORIES, dailyLog.getCalories());//.toString());///dailyLog.getName())
         long insert = database.insert(CALORIE_TABLE, null, cv);
 
         if (insert == -1) {
@@ -55,7 +58,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase database = this.getWritableDatabase();
 
-        String queryString = "DELETE FROM " + CUSTOMER_TABLE + " WHERE " + COLUMN_ID + " = " +
+        String queryString = "DELETE FROM " + CALORIE_TABLE + " WHERE " + COLUMN_ID + " = " +
                 dailyLog.getID();
 
         Cursor cursor = database.rawQuery(queryString, null);
@@ -70,7 +73,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public List<DailyLog> getEverything(){
 
         List<DailyLog> returnList = new ArrayList<>();
-        String queryString= "SELECT * FROM " + CUSTOMER_TABLE;
+        String queryString= "SELECT * FROM " + CALORIE_TABLE;
 
         SQLiteDatabase database = this.getReadableDatabase();
         Cursor cursor = database.rawQuery(queryString,null);
@@ -80,9 +83,9 @@ public class DBHelper extends SQLiteOpenHelper {
             do {
                 //int ID =  Integer.parseInt(cursor.getString(0));
                 int   ID   = cursor.getInt(0);
-                String customerName = cursor.getString( 1);
+                String dailyCalories = cursor.getString( 1);
                 //String customerName = cursor.getString(cursor.getColumnIndex("NAME"));
-                DailyLog dailyLog= new DailyLog(ID,customerName);
+                DailyLog dailyLog= new DailyLog(ID,dailyCalories);
 
 //           System.out.println("this is what daily log looks like right before being added to list");
 //           System.out.println(ID);
