@@ -8,11 +8,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormatSymbols;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class MainActivity2 extends AppCompatActivity {
      Calendar calendar;
       TextView textView;
+      SimpleDateFormat simpleDateFormat;
+      String Date;
     ArrayAdapter dailyLogArrayAdapter;
     ListView lv_resultlist;
     DBHelper dbHelper;
@@ -29,7 +33,9 @@ public class MainActivity2 extends AppCompatActivity {
                 (MainActivity2.this ,  android.R.layout.simple_list_item_1,dbHelper.getEverything());
         lv_resultlist.setAdapter(dailyLogArrayAdapter);
         calendar = Calendar.getInstance();
-        Toast.makeText(this, "calendar", Toast.LENGTH_SHORT).show();
+        simpleDateFormat= new SimpleDateFormat( "MM-dd-yyyy");
+        Date = simpleDateFormat.format(calendar.getTime());
+        Toast.makeText(this, Date, Toast.LENGTH_SHORT).show();
 
     }
 }
