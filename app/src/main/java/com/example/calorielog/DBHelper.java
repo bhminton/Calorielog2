@@ -26,7 +26,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
+    public void onCreate(SQLiteDatabase database) {
         String createTableStatement = "CREATE TABLE  "
                 + CALORIE_TABLE + "  ( " + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_TOTAL_CALORIES + " TEXT  )";
