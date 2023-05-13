@@ -14,9 +14,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 
 public class MainActivity extends AppCompatActivity {
+    Calendar calendar;
 
+    SimpleDateFormat simpleDateFormat;
+    String Date;
 
     TextView breakfast, amSnack, lunch, pmSnack, supper, nightSnack, exercise;
 
@@ -66,12 +72,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DailyLog dailyLog;
+                calendar = Calendar.getInstance();
+                simpleDateFormat= new SimpleDateFormat( "MM-dd-yyyy");
+                Date = simpleDateFormat.format(calendar.getTime());
 
                 try {
-                    dailyLog= new DailyLog( -1, editTextDailyTotal.getText().toString());
+                    dailyLog= new DailyLog( -1,Date, editTextDailyTotal.getText().toString());
 
                 } catch(Exception error){
-                    dailyLog= new DailyLog(-1, "Error");
+                    dailyLog= new DailyLog(-1, "Error", "Error");
                     Toast.makeText(MainActivity.this, "Error adding file ",Toast.LENGTH_LONG).show();
                 }
 

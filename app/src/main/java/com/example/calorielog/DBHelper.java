@@ -8,13 +8,18 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-
+    Calendar calendar;
+    SimpleDateFormat simpleDateFormat;
+    String Date;
     public static final String CALORIE_TABLE = "CALORIE_TABLE";
+    public static final String COLUMN_DATE = "DATE";
     public static final String COLUMN_TOTAL_CALORIES = "TOTAL_CALORIES";
     public static final String COLUMN_ID = "ID";
 
@@ -29,6 +34,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase database) {
         String createTableStatement = "CREATE TABLE  "
                 + CALORIE_TABLE + "  ( " + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + COLUMN_DATE + " TEXT,  "
                 + COLUMN_TOTAL_CALORIES + " TEXT  )";
         database.execSQL(createTableStatement);
 
@@ -41,8 +47,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public boolean addOne(DailyLog dailyLog) {
         SQLiteDatabase database = this.getWritableDatabase();
+        calendar = Calendar.getInstance();
+        simpleDateFormat= new SimpleDateFormat( "MM-dd-yyyy");
+        Date = simpleDateFormat.format(calendar.getTime());
         ContentValues cv = new ContentValues();
         // cv.put(COLUMN_ID,dailyLog.getID());
+        cv.put(COLUMN_DATE,Date);
         cv.put(COLUMN_TOTAL_CALORIES, dailyLog.getCalories());//.toString());///dailyLog.getName())
         long insert = database.insert(CALORIE_TABLE, null, cv);
 
@@ -83,9 +93,10 @@ public class DBHelper extends SQLiteOpenHelper {
             do {
                 //int ID =  Integer.parseInt(cursor.getString(0));
                 int   ID   = cursor.getInt(0);
-                String dailyCalories = cursor.getString( 1);
+                String date = cursor.getString(1);
+                String dailyCalories = cursor.getString( 2);
                 //String customerName = cursor.getString(cursor.getColumnIndex("NAME"));
-                DailyLog dailyLog= new DailyLog(ID,dailyCalories);
+                DailyLog dailyLog= new DailyLog(ID,date,dailyCalories);
 
 //           System.out.println("this is what daily log looks like right before being added to list");
 //           System.out.println(ID);
