@@ -17,10 +17,10 @@ public class DailyLog {
 
     @Override
     public String toString() {
-        return "DailyLog{" +
-                "ID=" + ID +
-                ", date='" + date + '\'' +
-                ", calories='" + calories + '\'' +
+        return //"DailyLog{" +
+               // "ID=" + ID +
+                " Date=" + date + '\'' +
+                "  Calories=" + calories + '\'' +
                 '}';
     }
 
